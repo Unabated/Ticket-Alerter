@@ -1,0 +1,20 @@
+{
+
+  "manifest_version": 2,
+  "name": "Root - Ticket Alerter",
+  "version": "1.0",
+
+  "description": "Alerts you of incoming Tickets.",
+
+  "content_scripts": [
+    {
+      "matches": ["*://rt.root.lu/Search/*"],
+      "js": ["alerter.js"]
+    },
+    {
+      "matches": ["*://rtpowered.com/Search/*"],
+      "js": ["alerter.js"]
+    }
+  ]
+
+}
