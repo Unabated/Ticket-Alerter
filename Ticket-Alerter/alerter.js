@@ -1,22 +1,57 @@
-var sound = new Audio("https://github.com/Unabated/Ticket-Alerter/raw/master/NewTicket.mp3");
-var x = document.title;
-var tc = sessionStorage.getItem("tc");
+//
+//	Root - Ticket Alerter
+//
+//	Author: Raach 'Unabated' Brian
+//
+//	Description: This script will alert you of new Tickets.
+//
+//
+//
+//
+//
 
-if (tc == null) {
-  x = x.substring(x.indexOf(" ")+1);
-  x = x.substring(0,x.indexOf(" "));
-  sessionStorage.setItem("tc",x);
-} else {
-  x = x.substring(x.indexOf(" ")+1);
-  x = x.substring(0,x.indexOf(" "));
-  if (x > tc) {
-    sound.play();
-    sessionStorage.setItem("tc",x);
-    document.title = document.title + " ALERT";
+
+/*###############################################################################
+##				 Declarations				       ##
+###############################################################################*/
+var sound = new Audio("https://github.com/Unabated/Ticket-Alerter/raw/master/NewTicket.mp3");
+
+/*###############################################################################
+##				  Functions				       ##
+###############################################################################*/
+
+function ExtractTicketCount(Title) {
+  Title = Title.substring(Title.indexOf(" ")+1);
+  Title = Title.substring(0,Title.indexOf(" "));
+  return Title;
+};
+
+function CheckForNewTickets(TicketCount){
+  if (TicketCount == null) {
+    sessionStorage.setItem("TicketCount",ExtractTicketCount(document.title));
   } else {
-    sessionStorage.setItem("tc",x);
+    if (ExtractTicketCount(document.title) > TicketCount) {
+      sound.play();
+      sessionStorage.setItem("TicketCount",ExtractTicketCount(document.title));
+      document.title = document.title + " ALERT";
+      return true;
+    } else {
+      sessionStorage.setItem("TicketCount",ExtractTicketCount(document.title));
+      return false;
+    }
   }
 }
+
+/*###############################################################################
+##				   Execution				       ##
+###############################################################################*/
+
+CheckForNewTickets(sessionStorage.getItem("TicketCount"));
+
+
+//var x = document.getElementsByClassName("collection-as-table");
+
+//document.title = "loaded";
 
 
 
