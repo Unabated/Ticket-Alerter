@@ -37,7 +37,11 @@ function CheckForNewTickets(TicketCount){
       return true;
     } else {
       sessionStorage.setItem("TicketCount",ExtractTicketCount(document.title));
-      document.title = ExtractTicketCount(document.title) + ' Tickets';
+      if (ExtractTicketCount = 1) {
+        document.title = ExtractTicketCount(document.title) + ' Ticket';
+      } else {
+        document.title = ExtractTicketCount(document.title) + ' Tickets';
+      }
       return false;
     }
   }
