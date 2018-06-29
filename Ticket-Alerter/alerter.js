@@ -21,7 +21,9 @@ var sound = new Audio("https://github.com/Unabated/Ticket-Alerter/raw/master/New
 ###############################################################################*/
 
 function ExtractTicketCount(Title) {
-  Title = Title.substring(Title.indexOf(" ")+1);
+  if (Title.indexOf("Found") > -1) {
+    Title = Title.substring(Title.indexOf(" ")+1);
+  }
   Title = Title.substring(0,Title.indexOf(" "));
   return Title;
 };
