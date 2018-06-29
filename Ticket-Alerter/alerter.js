@@ -5,7 +5,7 @@
 //
 //	Description: This script will alert you of new Tickets.
 //
-//
+//	Future plan: Also notify you of Ticket updates.
 //
 //
 //
@@ -33,10 +33,11 @@ function CheckForNewTickets(TicketCount){
     if (ExtractTicketCount(document.title) > TicketCount) {
       sound.play();
       sessionStorage.setItem("TicketCount",ExtractTicketCount(document.title));
-      document.title = document.title + " ALERT";
+      document.title = ExtractTicketCount(document.title) + '! Tickets';
       return true;
     } else {
       sessionStorage.setItem("TicketCount",ExtractTicketCount(document.title));
+      document.title = ExtractTicketCount(document.title) + ' Tickets';
       return false;
     }
   }
@@ -50,6 +51,7 @@ CheckForNewTickets(sessionStorage.getItem("TicketCount"));
 
 
 //var x = document.getElementsByClassName("collection-as-table");
+//25th item is the last updated information.
 
 //document.title = "loaded";
 
