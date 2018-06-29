@@ -35,11 +35,15 @@ function CheckForNewTickets(TicketCount){
     if (ExtractTicketCount(document.title) > TicketCount) {
       sound.play();
       sessionStorage.setItem("TicketCount",ExtractTicketCount(document.title));
-      document.title = ExtractTicketCount(document.title) + '! Tickets';
+      if (ExtractTicketCount == 1) {
+        document.title = ExtractTicketCount(document.title) + ' Ticket';
+      } else {
+        document.title = ExtractTicketCount(document.title) + ' Tickets';
+      }
       return true;
     } else {
       sessionStorage.setItem("TicketCount",ExtractTicketCount(document.title));
-      if (ExtractTicketCount = 1) {
+      if (ExtractTicketCount == 1) {
         document.title = ExtractTicketCount(document.title) + ' Ticket';
       } else {
         document.title = ExtractTicketCount(document.title) + ' Tickets';

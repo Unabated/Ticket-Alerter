@@ -2,7 +2,7 @@
 
   "manifest_version": 2,
   "name": "Root - Ticket Alerter",
-  "version": "1.4",
+  "version": "1.4.1",
 
   "description": "Alerts you of incoming Tickets.",
 
